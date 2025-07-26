@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.EventDetailsActivity">
+
+<!-- Top Toolbar -->
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:title="Event Details"
+    android:background="@color/white"
+    app:titleTextColor="@color/black"
+    app:navigationIcon="@drawable/baseline_arrow_back_24" />
+
+<!-- Scrollable content -->
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/nestedScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="70dp"
+    android:fillViewport="true"
+    android:layout_below="@id/toolbar"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:clipToPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+       >
+
+        <!-- Event Image -->
+        <ImageView
+            android:id="@+id/iv_eventImage"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/event"
+            android:background="@drawable/rounded_white_bg"
+            android:elevation="2dp"
+            android:clipToOutline="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Event Name -->
+
+        <!-- Date & Time -->
+        <TextView
+            android:id="@+id/tv_eventname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Singing Competition"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_eventImage" />
+
+        <LinearLayout
+            android:id="@+id/ll_eventtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="6dp"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/tv_eventname"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                >
+
+                <!-- Background Box with Curve -->
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/rounded_greybox" />
+
+                <!-- Image Icon Centered -->
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+
+
+                    android:src="@drawable/calendar" />
+            </FrameLayout>
+            <TextView
+                android:id="@+id/tv_eventtime"
+                android:textStyle="bold"
+
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat, 20 June · 6:00 PM"
+                android:textColor="#555555"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- Location -->
+        <LinearLayout
+            android:id="@+id/ll_eventlocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/ll_eventtime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center_vertical"
+            >
+            <FrameLayout
+                android:id="@+id/store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                >
+
+                <!-- Background Box with Curve -->
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/rounded_greybox" />
+
+                <!-- Image Icon Centered -->
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+
+
+                    android:src="@drawable/location" />
+            </FrameLayout>
+            <TextView
+                android:textStyle="bold"
+
+                android:layout_marginStart="10dp"
+                android:id="@+id/tv_eventlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delhi Auditorium"
+                android:textColor="#555555"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:dividerInsetEnd="5dp"
+            app:dividerInsetStart="5dp"
+            app:dividerThickness="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_eventlocation" />
+
+        <!-- About Section -->
+        <TextView
+            android:id="@+id/aboutLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="About"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_eventlocation" />
+
+        <TextView
+            android:id="@+id/tv_eventabout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="This is a grand level competition featuring top talents from across the country. Participants will showcase their skills and compete for exciting prizes."
+            android:textSize="16sp"
+            android:textColor="#444"
+
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/aboutLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+         />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:layout_gravity="bottom">
+
+        <!-- Top Divider -->
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="#E0E0E0"
+        />
+
+        <!-- Horizontal Row for Price and Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_eventcharge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="₹250"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000" />
+
+            <Button
+                android:id="@+id/btn_book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book"
+                android:paddingHorizontal="22dp"
+                android:backgroundTint="@color/lykablue"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="4dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.CancelConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SessionidActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhonenoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EventBookedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EventDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.BookingConfirmedActivity"
+            android:exported="false"
+            android:label="@string/title_activity_booking_confirmed"
+            android:theme="@style/Theme.MyApplication" />
+
+        <activity
+            android:name=".ui.DateTimeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.NameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SessionDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ExpertprofileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.FaqActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SessionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AllExpertsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.PersonalchatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CategoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".ui.NewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true" >
+
+        </activity>
+    </application>
+
+</manifest>

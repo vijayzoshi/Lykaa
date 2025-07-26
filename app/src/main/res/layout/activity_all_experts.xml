@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.AllExpertsActivity">
+
+    <ImageButton
+        android:id="@+id/ib_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/chipGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chipGroup"
+        app:srcCompat="@drawable/baseline_info_24" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+
+        app:layout_constraintEnd_toStartOf="@+id/ib_info"
+        app:layout_constraintStart_toStartOf="@+id/cd_search"
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cp_psychologist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:checkable="true"
+            android:checked="true"
+            android:paddingTop="10dp"
+            android:text="@string/psychologist"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/chip_selector"
+            app:chipEndPadding="20dp"
+            app:chipStartPadding="20dp"
+
+
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cp_psychiatrist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="@string/psychiatrist2"
+
+            android:textSize="10sp"
+            app:chipBackgroundColor="@color/chip_selector"
+            app:chipEndPadding="20dp"
+            app:chipStartPadding="20dp"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cp_Listener"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Listener"
+
+            android:textSize="10sp"
+            app:chipBackgroundColor="@color/chip_selector"
+            app:chipEndPadding="20dp"
+            app:chipStartPadding="20dp"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <!--
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd_search"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/ib_filter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroup">
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:hint="@string/search_experts"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp" />
+
+    </androidx.cardview.widget.CardView>
+
+-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cd_search"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Offline"
+
+        app:expandedHintEnabled="true"
+        app:endIconMode="dropdown_menu"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroup">
+
+        <AutoCompleteTextView
+            android:id="@+id/locationDropdown"
+            android:layout_width="match_parent"
+            android:textSize="12sp"
+
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <ImageButton
+        android:id="@+id/ib_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/cd_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cd_search"
+        app:srcCompat="@drawable/baseline_filter_list_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_allexperts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cd_search"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/rv_experts" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+tools:context=".ui.SessionidActivity">
+
+
+
+
+
+
+
+<com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Session ID"
+
+        app:subtitle="#123145"
+        android:background="@color/white"
+        app:navigationIcon="@drawable/baseline_arrow_back_24" >
+
+        <TextView
+            android:id="@+id/tv_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help"
+            android:textColor="@color/lykablue"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="10dp"
+
+            android:textStyle="bold"
+            />
+    </com.google.android.material.appbar.MaterialToolbar>
+
+</com.google.android.material.appbar.AppBarLayout>
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:background="@color/white">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_expertpic"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/docpic"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_expertname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="92dp"
+        android:text="@string/dr_rakesh_joshi"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/iv_expertpic"
+        app:layout_constraintTop_toTopOf="@+id/iv_expertpic" />
+
+
+    <TextView
+        android:id="@+id/tv_cancelled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_cancelled"
+        android:text="Cancelled"
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:textColor="#FA7070"
+        android:textStyle="bold"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_expertname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_expertname" />
+
+    <TextView
+        android:id="@+id/tv_completed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_sessionstatus"
+        android:text="Completed"
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:textColor="#72BF78"
+        android:textStyle="bold"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_expertname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_expertname" />
+
+
+    <TextView
+        android:id="@+id/tv_expertdesign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/psychiatrist"
+        app:layout_constraintStart_toStartOf="@+id/tv_expertname"
+        app:layout_constraintTop_toBottomOf="@+id/tv_expertname" />
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="10dp"
+        android:background="#F3F2F2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_expertpic" />
+
+
+
+    <FrameLayout
+        android:id="@+id/modeimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2">
+
+        <!-- Background Box with Curve -->
+        <View
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_greybox" />
+
+        <!-- Image Icon Centered -->
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+
+
+            app:srcCompat="@drawable/baseline_group_24" />
+    </FrameLayout>
+
+
+
+    <TextView
+        android:id="@+id/tv_sessionmode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Offline"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/modeimage"
+        app:layout_constraintStart_toEndOf="@+id/modeimage"
+        app:layout_constraintTop_toTopOf="@+id/modeimage" />
+
+
+    <FrameLayout
+        android:id="@+id/dateimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modeimage">
+
+        <!-- Background Box with Curve -->
+        <View
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_greybox" />
+
+        <!-- Image Icon Centered -->
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+
+
+            app:srcCompat="@drawable/baseline_calendar_month_24" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tv_sessiondate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="18 June"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="@+id/dateimage"
+        app:layout_constraintStart_toEndOf="@+id/dateimage"
+        app:layout_constraintTop_toTopOf="@+id/dateimage" />
+
+
+    <FrameLayout
+        android:id="@+id/timeimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateimage">
+
+        <!-- Background Box with Curve -->
+        <View
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_greybox" />
+
+        <!-- Image Icon Centered -->
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+
+
+            app:srcCompat="@drawable/baseline_access_time_24" />
+    </FrameLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/tv_sessiontime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="9 : 00 pm"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="@+id/timeimage"
+        app:layout_constraintStart_toEndOf="@+id/timeimage"
+        app:layout_constraintTop_toTopOf="@+id/timeimage" />
+
+
+    <FrameLayout
+        android:id="@+id/chargeimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeimage">
+
+        <!-- Background Box with Curve -->
+        <View
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:background="@drawable/rounded_greybox" />
+
+        <!-- Image Icon Centered -->
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+
+
+            app:srcCompat="@drawable/baseline_account_balance_wallet_24" />
+    </FrameLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/tv_expertcharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Rs 1900"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="@+id/chargeimage"
+        app:layout_constraintStart_toEndOf="@+id/chargeimage"
+        app:layout_constraintTop_toTopOf="@+id/chargeimage" />
+
+
+    <FrameLayout
+        android:id="@+id/clinicimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chargeimage">
+
+        <!-- Background Box with Curve -->
+        <View
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:background="@drawable/rounded_greybox" />
+
+        <!-- Image Icon Centered -->
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+
+
+            app:srcCompat="@drawable/baseline_school_24" />
+    </FrameLayout>
+
+
+
+    <TextView
+        android:id="@+id/clinictext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Clinic Address"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/clinicimage"
+        app:layout_constraintStart_toEndOf="@+id/clinicimage"
+        app:layout_constraintTop_toTopOf="@+id/clinicimage" />
+
+    <ImageButton
+        android:id="@+id/btn_visit"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+
+        android:src="@drawable/outline_info_24"
+        android:background="@color/white"
+
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/clinictext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/clinictext" />
+
+    <TextView
+        android:id="@+id/tv_clinicaddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Teen Murti House, Teen Murti Marg, Teen Murti Marg Area, New Delhi, Delhi 110011"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clinictext" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.HomeFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:textColor="@color/black"
+            android:text="Lyka"
+            android:fontFamily="@font/extrabold"
+            android:textSize="25sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cd_search"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableStart="@drawable/baseline_search_24"
+                    android:drawablePadding="10dp"
+                    android:focusable="false"
+                    android:hint="@string/search_experts"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/nextsession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Next Sesssion"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="@font/bold"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cd_search" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cl"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nextsession">
+
+<!--
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/pi_home"
+                    android:layout_gravity="center"
+                    app:indicatorColor = "@color/black"
+                    android:indeterminate="true"
+                    />
+
+
+-->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_expertpic"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/docpic"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_expertname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/dr_rakesh_joshi"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/iv_expertpic"
+                        app:layout_constraintTop_toTopOf="@+id/iv_expertpic" />
+
+
+                    <TextView
+                        android:id="@+id/tv_designation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/psychiatrist"
+                        app:layout_constraintStart_toStartOf="@+id/tv_expertname"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_expertname" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_joinsession"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_expertpic">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/baseline_calendar_month_24" />
+
+                        <TextView
+                            android:id="@+id/tv_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="Monday, Aug 29"
+
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/baseline_access_time_24" />
+
+                        <TextView
+                            android:id="@+id/tv_time"
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="11:00 A.M."
+                            android:textColor="@color/black" />
+
+
+                    </LinearLayout>
+
+
+                    <Button
+                        android:id="@+id/btn_joinsession"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="70dp"
+                        android:layout_marginEnd="70dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="#0968F6"
+                        android:text="@string/join_session"
+
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.495"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/experts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Experts"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/bold"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl" />
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                app:chipSpacingHorizontal="33dp"
+
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cd_search"
+                app:layout_constraintTop_toBottomOf="@id/experts"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cp_psychologist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:checkable="true"
+                    android:checked="true"
+                    android:paddingTop="10dp"
+                    android:text="@string/psychologist"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/regular"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipEndPadding="20dp"
+                    app:chipStartPadding="20dp"
+
+
+                    app:chipStrokeColor="#E0E0E0"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cp_psychiatrist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="@string/psychiatrist2"
+                    android:fontFamily="@font/regular"
+
+                    android:textSize="10sp"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipEndPadding="20dp"
+                    app:chipStartPadding="20dp"
+                    app:chipStrokeColor="#E0E0E0"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/cp_listener"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="Listener"
+                    android:fontFamily="@font/regular"
+
+                    android:textSize="10sp"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipEndPadding="20dp"
+                    app:chipStartPadding="20dp"
+                    app:chipStrokeColor="#E0E0E0"
+                    app:chipStrokeWidth="1dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#E0E0E0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/rv_allexperts" />
+
+            <!-- Info Button -->
+            <ImageButton
+                android:id="@+id/imagebutton"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+
+                android:backgroundTint="@color/white"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/outline_info_24"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Help you with therapy based approach."
+                android:textSize="12sp"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/regular"
+                app:layout_constraintBottom_toBottomOf="@+id/imagebutton"
+                app:layout_constraintStart_toEndOf="@+id/imagebutton"
+                app:layout_constraintTop_toTopOf="@+id/imagebutton"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+            <TextView
+                android:id="@+id/tv_learnmore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learn more."
+                android:textSize="12sp"
+                android:textColor="@color/lykablue"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imagebutton"
+                app:layout_constraintStart_toEndOf="@+id/tv_info"
+                app:layout_constraintTop_toTopOf="@+id/imagebutton"
+              />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/location"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+
+                android:hint="Location"
+                app:boxCornerRadiusBottomEnd="25dp"
+                app:boxCornerRadiusBottomStart="25dp"
+                app:boxCornerRadiusTopEnd="25dp"
+                app:boxCornerRadiusTopStart="25dp"
+                app:endIconMode="dropdown_menu"
+                app:expandedHintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_info">
+
+                <AutoCompleteTextView
+                    android:id="@+id/locationDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:inputType="none"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/ib_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+
+                android:textColor="@color/black"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:backgroundTint="@color/white"
+                android:text="Filter"
+                app:iconPadding="8dp"
+                app:iconGravity="textEnd"
+                app:icon="@drawable/baseline_filter_list_24"
+
+            app:layout_constraintBottom_toBottomOf="@+id/location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/location"
+           />
+
+-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_allexperts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/location"
+                app:layout_constraintVertical_bias="0.0"
+                tools:listitem="@layout/rv_experts" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

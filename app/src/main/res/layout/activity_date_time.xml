@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:title="Session Slots"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/baseline_arrow_back_24" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
+        android:fillViewport="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:clipToPadding="false">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_anchor="@+id/nestedScroll"
+        app:layout_anchorGravity="center">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:chipSpacingHorizontal="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView8"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_online"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:checkable="true"
+                android:text="Online"
+                android:textSize="20sp"
+                app:chipCornerRadius="10dp"
+
+                app:chipEndPadding="20dp"
+
+                app:chipStrokeColor="@color/white"
+                app:chipIcon="@drawable/profileicon"
+                app:chipIconEnabled="true"
+                app:chipIconSize="30dp"
+           />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_offline"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:checkable="true"
+                android:text="Offline"
+                android:textSize="20sp"
+                app:chipCornerRadius="10dp"
+                app:chipEndPadding="20dp"
+                app:chipIcon="@drawable/homeicon"
+                app:chipIconEnabled="true"
+                app:chipIconSize="30dp"
+                app:chipStrokeColor="@color/white"
+     />
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Session Mode"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+
+            android:layout_marginTop="20dp"
+            android:text="Available Dates"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cg_session" />
+
+        <TextView
+            android:id="@+id/tv_timeslot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Time Slot"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+
+            app:layout_constraintTop_toBottomOf="@id/hsc" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsc"
+            android:layout_width="match_parent"
+
+
+            android:layout_height="wrap_content"
+
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@color/white"
+            android:scrollbars="none"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_availabledates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:singleSelection="true" />
+
+        </HorizontalScrollView>
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_availabletimes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_timeslot"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            />
+
+
+        <!--
+
+    <TextView
+        android:id="@+id/pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Patient Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/cg_availabletimes"
+        app:layout_constraintTop_toBottomOf="@id/cg_availabletimes" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tf_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/pt"
+        app:layout_constraintTop_toBottomOf="@+id/pt">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="10"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    -->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:backgroundTint="#E0E0E0" />
+
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#1B3C53"
+            android:text="Next"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Event Image -->
+        <ImageView
+            android:id="@+id/iv_eventpic"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/event" />
+
+        <!-- Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!-- Event Name -->
+            <TextView
+                android:id="@+id/tv_eventname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dance Competition"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <!-- Time Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="6dp"
+                android:gravity="center_vertical">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <!-- Background Box with Curve -->
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/rounded_greybox" />
+
+                    <!-- Image Icon Centered -->
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+
+
+                        android:src="@drawable/calendar" />
+                </FrameLayout>
+                <TextView
+                    android:id="@+id/tv_eventtime"
+                    android:textStyle="bold"
+
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sat, 20 June · 6:00 PM"
+                    android:textColor="#555555"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- Location Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="4dp"
+                android:gravity="center_vertical">
+                <FrameLayout
+                    android:id="@+id/store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <!-- Background Box with Curve -->
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/rounded_greybox" />
+
+                    <!-- Image Icon Centered -->
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+
+
+                        android:src="@drawable/location" />
+                </FrameLayout>
+                <TextView
+                    android:textStyle="bold"
+
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/tv_eventlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delhi Auditorium"
+                    android:textColor="#555555"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- Charge & Button Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_eventcharge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹200"
+                        android:textStyle="bold"
+
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_join"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Join"
+
+                    android:backgroundTint="@color/lykablue"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="4dp"
+/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

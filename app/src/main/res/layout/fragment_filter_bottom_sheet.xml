@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomSheetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <!-- Left Menu -->
+        <LinearLayout
+            android:id="@+id/leftMenu"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#F0F0F0">
+
+            <TextView
+                android:id="@+id/tvSort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="Sort"
+                android:textStyle="bold"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tvExpertise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="Expertise"
+                android:textStyle="bold"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="Gender"
+                android:textStyle="bold"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tvLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="Language"
+                android:textStyle="bold"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <!-- Right Content Panel -->
+        <FrameLayout
+            android:id="@+id/rightPanel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp">
+
+            <!-- This will be dynamically replaced by sort/expertise/gender/language layouts -->
+
+            <!-- Example: Sort Options -->
+            <RadioGroup
+                android:id="@+id/sortOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:visibility="gone">
+
+                <RadioButton android:text="Price: Low to High"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+                <RadioButton android:text="Price: High to Low"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <RadioButton android:text="Exp: Low to High"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <RadioButton android:text="Exp: High to Low"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+            </RadioGroup>
+
+            <!-- Example: Expertise -->
+            <LinearLayout
+                android:id="@+id/expertiseOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <CheckBox android:text="a"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="b"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="c"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="d"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="e"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="f"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="g"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="h"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="i"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="j"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+            </LinearLayout>
+
+            <!-- Gender -->
+         <!--   <LinearLayout
+                android:id="@+id/genderOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <CheckBox android:text="Male"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="Female"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+            </LinearLayout>
+
+-->
+
+            <RadioGroup
+                android:id="@+id/genderOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton android:text="Male"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+                <RadioButton android:text="Female"
+                    android:layout_height="wrap_content"
+
+                    android:layout_width="match_parent"/>
+
+            </RadioGroup>
+            <!-- Language -->
+            <!--
+            <LinearLayout
+                android:id="@+id/languageOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <CheckBox android:text="Hindi"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="English"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="Kannada"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="Tamil"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <CheckBox android:text="Telugu"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+            </LinearLayout>
+            -->
+            <RadioGroup
+                android:id="@+id/languageOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RadioButton android:text="Hindi"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+                <RadioButton android:text="English"
+                    android:layout_height="wrap_content"
+
+                    android:layout_width="match_parent"/>
+                <RadioButton android:text="Kannada"
+                    android:layout_height="wrap_content"
+
+                    android:layout_width="match_parent"/>
+
+            </RadioGroup>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Apply Button -->
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        android:backgroundTint="@color/lykablue"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp"/>
+</LinearLayout>

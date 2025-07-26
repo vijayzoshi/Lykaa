@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "658779705814",
+    "firebase_url": "https://lyka-387a2-default-rtdb.firebaseio.com",
+    "project_id": "lyka-387a2",
+    "storage_bucket": "lyka-387a2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658779705814:android:553505666a040a46995477",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658779705814-7ja673aauhe95d13aeq5u78f7rgfts8n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "fe2cad6bab65b57de6638b46db824fa618b44103"
+          }
+        },
+        {
+          "client_id": "658779705814-gkeoq7k8rv58up2jgl1p7fmk2ojtk8d3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1dQil8NR2nJ6WbGBlWTNyqtG-X2jFI8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658779705814-gkeoq7k8rv58up2jgl1p7fmk2ojtk8d3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

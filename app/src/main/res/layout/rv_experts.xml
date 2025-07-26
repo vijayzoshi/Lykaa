@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_expertpic"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/docpic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_expertname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/dr_rakesh_joshi"
+                android:fontFamily="@font/bold"
+
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/iv_expertpic"
+                app:layout_constraintTop_toTopOf="@+id/iv_expertpic" />
+
+            <TextView
+                android:id="@+id/tv_experince"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/_18_years"
+                android:fontFamily="@font/regular"
+
+                app:layout_constraintStart_toStartOf="@+id/tv_designation"
+                app:layout_constraintTop_toBottomOf="@+id/tv_designation" />
+
+            <TextView
+                android:id="@+id/tv_designation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/psychiatrist"
+                android:fontFamily="@font/regular"
+
+                app:layout_constraintStart_toStartOf="@+id/tv_expertname"
+                app:layout_constraintTop_toBottomOf="@+id/tv_expertname" />
+
+            <TextView
+                android:id="@+id/tv_ratings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="4.4"
+                android:textColor="@color/black"
+
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_designation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_expertname" />
+
+            <TextView
+                android:id="@+id/tv_noofrating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(350)"
+
+                android:textSize="9sp"
+                app:layout_constraintStart_toStartOf="@id/tv_ratings"
+                app:layout_constraintEnd_toEndOf="@id/tv_ratings"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ratings" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_ratings"
+                app:layout_constraintEnd_toStartOf="@+id/tv_ratings"
+                app:layout_constraintTop_toTopOf="@+id/tv_ratings"
+                app:srcCompat="@drawable/baseline_star_24" />
+
+
+
+            <Button
+                android:id="@+id/btn_booknow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/book_now"
+                android:textColor="@color/white"
+                app:backgroundTint="#1B3C53"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_experince" />
+
+            <TextView
+                android:id="@+id/tv_charge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="₹1500"
+                android:textColor="@color/black"
+
+                android:fontFamily="@font/bold"
+
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_booknow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_booknow" />
+            <TextView
+                android:id="@+id/tv_sessiontime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="| 20 min"
+
+                android:fontFamily="@font/regular"
+
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_charge"
+                app:layout_constraintStart_toEndOf="@id/tv_charge"
+                app:layout_constraintTop_toTopOf="@+id/tv_charge" />
+
+            <TextView
+                android:id="@+id/tv_expertmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Delhi, Online"
+                android:textSize="12sp"
+                android:fontFamily="@font/regular"
+
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_charge"
+                app:layout_constraintStart_toStartOf="@+id/tv_charge"
+                app:srcCompat="@drawable/baseline_group_24" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_expertmode"
+                app:layout_constraintStart_toStartOf="@+id/btn_booknow"
+                app:layout_constraintTop_toTopOf="@+id/tv_expertmode"
+                app:srcCompat="@drawable/baseline_contactless_24" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Hindi, English"
+
+                android:fontFamily="@font/regular"
+
+
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
