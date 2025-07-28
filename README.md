@@ -1,2 +1,2 @@
 # Lykaa
-Book mental health experts anywhere from india
+Book mental health experts for online as well as offline session
