@@ -26,7 +26,7 @@
             android:name=".ui.SessionidActivity"
             android:exported="false" />
         <activity
-            android:name=".PhonenoActivity"
+            android:name=".ui.PhonenoActivity"
             android:exported="false" />
         <activity
             android:name=".ui.EventBookedActivity"
@@ -61,15 +61,16 @@
         <activity
             android:name=".ui.ExpertprofileActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.FaqActivity"
             android:exported="true" />
@@ -99,7 +100,13 @@
             android:name=".ui.MainActivity"
             android:exported="true" >
 
+
         </activity>
+
+
+        <activity
+            android:name=".ui.OtpActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

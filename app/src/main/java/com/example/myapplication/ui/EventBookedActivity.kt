@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+/*package com.example.myapplication.ui
 
 import android.animation.Animator
 import android.content.Intent
@@ -55,3 +55,5 @@ class EventBookedActivity : AppCompatActivity() {
 
 
 }
+
+ */

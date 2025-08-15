@@ -22,17 +22,27 @@
             app:title="Rakesh"
             android:background="@color/white"
             app:navigationIcon="@drawable/baseline_arrow_back_24" >
+            <ImageButton
+                android:id="@+id/ib_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
 
-            <TextView
+                android:visibility="invisible"
+
+                android:src="@drawable/baseline_info_24"
+                />
+            <ImageButton
                 android:id="@+id/tv_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Book"
-                android:textColor="@color/lykablue"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="10dp"
 
-                android:textStyle="bold"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/outline_info_24"
                 />
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -46,10 +56,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="60dp"
         android:fillViewport="true"
         >
-
+<!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -80,7 +90,7 @@
 
             </androidx.cardview.widget.CardView>
 
-
+-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_personalchats"
                 android:layout_width="match_parent"
@@ -98,7 +108,6 @@
                 tools:listitem="@layout/rv_sentmsg" />
 
 
-        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
 
@@ -107,7 +116,7 @@
     <LinearLayout
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="#FFFFFF"
         android:elevation="8dp"
@@ -116,7 +125,7 @@
         <!-- Top Divider -->
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:backgroundTint="#E0E0E0"
             />
 
@@ -134,10 +143,12 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="#66ECECEC"
                 android:hint="type message"
                 android:inputType="text"
 
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="@drawable/sendmsget_bg"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
@@ -151,26 +162,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:padding="5dp"
 
+                android:layout_marginStart="5dp"
 
                 android:src="@drawable/baseline_send_24"
                 app:layout_constraintBottom_toBottomOf="@+id/et_sendmsg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_sendmsg" />
 
-            <ImageButton
-                android:id="@+id/ib_test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:layout_marginEnd="10dp"
-                android:padding="5dp"
 
-
-                android:src="@drawable/baseline_info_24"
-             />
         </LinearLayout>
     </LinearLayout>
 

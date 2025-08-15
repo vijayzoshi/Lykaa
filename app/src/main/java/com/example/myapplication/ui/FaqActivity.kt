@@ -35,7 +35,7 @@ class FaqActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        toolbar.title = faqtype + "" + "Faq"
+        toolbar.title = faqtype + " " + "FAQ"
 
         faqRecyclerview = findViewById(R.id.rv_faq)
         faqRecyclerview.layoutManager= LinearLayoutManager(this)

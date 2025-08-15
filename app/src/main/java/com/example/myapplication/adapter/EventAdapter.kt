@@ -1,4 +1,4 @@
-package com.example.myapplication.adapter
+/*package com.example.myapplication.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -78,3 +78,5 @@ class EventAdapter(val context: Context, var dataList: ArrayList<EventsModel>) :
 
 
 }
+
+ */

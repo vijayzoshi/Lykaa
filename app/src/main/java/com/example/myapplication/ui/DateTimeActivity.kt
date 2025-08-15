@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -44,24 +45,52 @@ class DateTimeActivity : AppCompatActivity() {
             finish()
         }
         val expertid = intent.getIntExtra("expertid", 0)
+        val expertidtype = intent.getIntExtra("expertidtype", 0)
 
 
         val nextBtn = findViewById<Button>(R.id.btn_next)
+
         val sessionCg = findViewById<ChipGroup>(R.id.cg_session)
+
+        val audio = findViewById<Chip>(R.id.chip_audio)
+        val online = findViewById<Chip>(R.id.chip_online)
+        val offline = findViewById<Chip>(R.id.chip_offline)
+
+        if (expertidtype == 3) {
+            audio.visibility = View.VISIBLE
+            online.visibility = View.GONE
+            offline.visibility = View.GONE
+            audio.isChecked = true
+            sessionmode = "Audio Call"
+        }else{
+            audio.visibility = View.GONE
+            online.visibility = View.VISIBLE
+            offline.visibility = View.VISIBLE
+
+            sessionCg.setOnCheckedChangeListener { group, checkedId ->
+                if (checkedId != View.NO_ID) {
+                    val selectedChip = group.findViewById<Chip>(checkedId)
+                    sessionmode = selectedChip.text.toString()
+                }
+            }
+        }
+
+
+
+
 
         val availabledatesCg = findViewById<ChipGroup>(R.id.cg_availabledates)
         val availabletimesCg = findViewById<ChipGroup>(R.id.cg_availabletimes)
 
-        val timeslotTv = findViewById<TextView>(R.id.tv_timeslot)
-        timeslotTv.visibility = View.GONE
 
-        sessionCg.setOnCheckedChangeListener { group, checkedId ->
-            if (checkedId != View.NO_ID) {
-                val selectedChip = group.findViewById<Chip>(checkedId)
-                sessionmode = selectedChip.text.toString()
-                Toast.makeText(this, "Selected: $sessionmode", Toast.LENGTH_SHORT).show()
-            }
-        }
+
+        val timeslotTv = findViewById<TextView>(R.id.tv_timeslot)
+        val bookedTv = findViewById<TextView>(R.id.tv_booked)
+        val bookedIv = findViewById<ImageView>(R.id.iv_booked)
+        bookedTv.visibility = View.GONE
+        timeslotTv.visibility = View.GONE
+        bookedIv.visibility  = View.GONE
+
 
 
 
@@ -97,28 +126,7 @@ class DateTimeActivity : AppCompatActivity() {
                         availabledatesCg.addView(chip)
                     }
 
-/*
-                    for (dateSnapshot in snapshot.children) {
-                        val dateKey = dateSnapshot.key
-                        if (dateKey != null) {
-                            datearraylist.add(dateKey)
-                        }
 
-                            val chip = Chip(this@DateTimeActivity)
-                            chip.text = dateKey
-                            chip.isCheckable = true
-                            chip.isClickable = true
-
-
-                            //    chip.chipBackgroundColor = R.color.chip_selector
-                            //  chip.chipStrokeColor = Color.BLACK
-                            chip.setTextColor(Color.BLACK)
-
-
-                            availabledatesCg.addView(chip)
-
-                    }
-                    */
 
                 }
             }
@@ -130,21 +138,21 @@ class DateTimeActivity : AppCompatActivity() {
         })
 
 
-// On Date Chip Selection
         availabledatesCg.setOnCheckedChangeListener { group, checkedId ->
-            availabletimesCg.removeAllViews() // Clear previous
-
+            availabletimesCg.removeAllViews()
             if (checkedId != View.NO_ID) {
                 val selectedChip = group.findViewById<Chip>(checkedId)
 
                 selecteddate = selectedChip.text.toString()
                 timeslotTv.visibility = View.VISIBLE
+                bookedTv.visibility = View.VISIBLE
+                bookedIv.visibility  = View.VISIBLE
 
 
                 databaseReference.child(selecteddate!!).addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
-                        val slotMap = mutableListOf<Pair<String, String>>()  // Pair<slotText, status>
+                        val slotMap = mutableListOf<Pair<String, String>>()
 
                         for (slotSnapshot in snapshot.children) {
                             val time = slotSnapshot.key
@@ -155,7 +163,7 @@ class DateTimeActivity : AppCompatActivity() {
                             }
                         }
 
-                        // Sort by start time (e.g., 11:00 AM in "11:00 AM - 12:00 PM")
+                        // Sort by start time (11:00 AM in "11:00 AM - 12:00 PM")
                         val formatter = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
                         slotMap.sortBy { pair ->
                             val startTime = pair.first.split(" - ").firstOrNull()
@@ -173,7 +181,7 @@ class DateTimeActivity : AppCompatActivity() {
                                 chipStrokeColor = ColorStateList.valueOf(Color.WHITE)
 
                                 if (status == "b") {
-                                    chipBackgroundColor = ColorStateList.valueOf(Color.rgb(255, 138, 138)) // Red for booked
+                                    chipBackgroundColor = ColorStateList.valueOf(Color.rgb(254, 180, 180)) // Red for booked
                                 }
                             }
 
@@ -234,7 +242,6 @@ class DateTimeActivity : AppCompatActivity() {
             if (checkedId != View.NO_ID) {
                 val selectedChip = group.findViewById<Chip>(checkedId)
                 selectedtime = selectedChip.text.toString()
-                Toast.makeText(this, "Selected: $selectedtime", Toast.LENGTH_SHORT).show()
             }
         }
 

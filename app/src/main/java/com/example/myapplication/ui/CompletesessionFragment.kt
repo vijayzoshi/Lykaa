@@ -64,8 +64,12 @@ class CompletesessionFragment : Fragment() {
                     upcomingsessionRecyclerview.visibility = View.VISIBLE
                     for (datasnapshot in snapshot.children) {
                         val data = datasnapshot.getValue(UpcomingSessionModel::class.java)
-                        upcomingsessionArraylist.add(data!!)
+                        if (data != null && data.sessionstatus != "Upcoming") {
+                            upcomingsessionArraylist.add(data)
+                        }
                     }
+
+
 
                 } else {
                     nosessionLinearLayout.visibility = View.VISIBLE

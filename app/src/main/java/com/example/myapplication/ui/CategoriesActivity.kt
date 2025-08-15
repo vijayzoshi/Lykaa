@@ -12,14 +12,14 @@ import com.example.myapplication.model.CategoriesModel
 
 class CategoriesActivity : AppCompatActivity() {
 
-/*
-     lateinit var categoriesRecyclerview : RecyclerView
-     lateinit var categoriesAdapter : CategoriesAdapter
-     lateinit var categoriesArraylist : ArrayList<CategoriesModel>
+    /*
+         lateinit var categoriesRecyclerview : RecyclerView
+         lateinit var categoriesAdapter : CategoriesAdapter
+         lateinit var categoriesArraylist : ArrayList<CategoriesModel>
 
- */
+     */
 
-    private lateinit var binding : ActivityCategoriesBinding
+    private lateinit var binding: ActivityCategoriesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class CategoriesActivity : AppCompatActivity() {
 
 
         binding.toolbar.title = "Faq"
-        binding.toolbar.setNavigationOnClickListener{
+        binding.toolbar.setNavigationOnClickListener {
             finish()
         }
 
@@ -57,7 +57,6 @@ class CategoriesActivity : AppCompatActivity() {
         }
 
 
-
         /*
           categoriesArraylist = ArrayList<CategoriesModel>()
          categoriesArraylist.add(  CategoriesModel(R.drawable.anxiety, "General"))
@@ -65,21 +64,11 @@ class CategoriesActivity : AppCompatActivity() {
          categoriesArraylist.add(  CategoriesModel(R.drawable.bipolar, "Psychologist"))
          categoriesArraylist.add(  CategoriesModel(R.drawable.love, "Psychiatrist"))
         categoriesArraylist.add(  CategoriesModel(R.drawable.love, "Listener"))
-
-
-
-
         categoriesAdapter = CategoriesAdapter(this,categoriesArraylist)
-
                 categoriesRecyclerview = findViewById(R.id.rv_categories)
                 categoriesRecyclerview.layoutManager =  GridLayoutManager(this,2)
                 categoriesRecyclerview.adapter = categoriesAdapter
-
-
-
          */
-
-
 
 
     }

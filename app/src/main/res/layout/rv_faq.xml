@@ -9,12 +9,16 @@
         android:id="@+id/cd_quesans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,30 +26,29 @@
             android:orientation="vertical">
 
 
-
-        <TextView
-            android:id="@+id/tv_ques"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:paddingTop="15dp"
-            android:paddingEnd="10dp"
-            android:paddingStart="20dp"
-            android:paddingBottom="15dp"
-            android:text="How much does one session cost ?" />
+            <TextView
+                android:id="@+id/tv_ques"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="15dp"
+                android:text="How much does one session cost ?"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_ans"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FAFAFA"
-                android:paddingStart="20dp"
+                android:paddingStart="10dp"
                 android:paddingTop="15dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="15dp"
                 android:text="It's 2000 per sesson"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
             <View
                 android:id="@+id/divider"

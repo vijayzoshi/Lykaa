@@ -41,7 +41,7 @@
 
         android:textAlignment="center"
         android:text="Money will revert to yout bank account within 3 days."
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/lottieView"
         app:layout_constraintStart_toStartOf="@+id/lottieView"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />

@@ -12,11 +12,12 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 
-
-    class PersonalchatsAdapter( var datalist: ArrayList<PersonalchatsModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    class PersonalchatsAdapter(private val context: Context, var datalist: ArrayList<PersonalchatsModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var ITEM_SENT = 1
         var ITEM_RECEIVE = 2
 
+        val sharedPref = context.getSharedPreferences("userdetails", Context.MODE_PRIVATE)
+        val uid = sharedPref.getString("userid", "haha").toString()
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             return if(viewType == ITEM_SENT){
 
@@ -28,6 +29,7 @@ import com.google.firebase.auth.FirebaseAuth
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
 
 
             if(holder.itemViewType == ITEM_SENT){
@@ -52,7 +54,7 @@ import com.google.firebase.auth.FirebaseAuth
         //FirebaseAuth.getInstance().uid.toString()
 
         override fun getItemViewType(position: Int): Int {
-            return if( "1" == datalist.get(position).senderuid
+            return if( uid == datalist.get(position).senderuid
             ){
                 ITEM_SENT
             }else{

@@ -52,8 +52,8 @@ class SessionidActivity : AppCompatActivity() {
 
 
 
-        binding.myToolbar.title = "Session ID"
-        binding.myToolbar.subtitle = sessionid.toString()
+        binding.myToolbar.title = "Session ID : " + sessionid.toString()
+    //    binding.myToolbar.subtitle =
         binding.myToolbar.setNavigationOnClickListener {
             finish()
         }
@@ -145,7 +145,7 @@ class SessionidActivity : AppCompatActivity() {
                 binding.tvClinicaddress.text =  snapshot.child("clinic").child("clinic address").getValue<String>()
                 lat = snapshot.child("clinic").child("clinic lat").getValue<String>().toString()
                 long = snapshot.child("clinic").child("clinic long").getValue<String>().toString()
-                binding.tvExpertcharge.text =  snapshot.child("expertcharge").getValue<Int>().toString()
+                binding.tvExpertcharge.text =  "₹"+ snapshot.child("expertcharge").getValue<Int>().toString()
 
                 val imagelink = snapshot.child("expertpic").getValue(String::class.java)
                 Glide.with(getApplicationContext())

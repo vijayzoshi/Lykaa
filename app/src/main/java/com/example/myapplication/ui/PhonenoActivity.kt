@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ui
 
 import android.content.Context
 import android.content.Intent
@@ -10,10 +10,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.myapplication.ui.MainActivity2
+import com.example.myapplication.R
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallService
+import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig
 
 class PhonenoActivity : AppCompatActivity() {
 
@@ -36,23 +38,47 @@ class PhonenoActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("userdetails", Context.MODE_PRIVATE)
         val uid = sharedPref.getString("userid", "haha").toString()
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid)
+
+
 
         val username = intent.getStringExtra("username")
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid)
+
 
 
 
         val userphonenoTf = findViewById<TextInputLayout>(R.id.tf_userphoneno)
         val usernameTv = findViewById<TextView>(R.id.tv_username)
-        val name = "Hey" + " " + username
-        usernameTv.text = name
         val nextBtn = findViewById<Button>(R.id.btn_next)
+
+        usernameTv.text = "Hey" + " " + username
+
+
+
+        val  application = application // Android's application context
+        val  appID =1128845963L    // yourAppID
+        val appSign ="7ed70bc4ef4935a75f27ed561414f69f26bde8e574fec4b505b1ec47b6397eb3";  // yourAppSign
+
+
 
         nextBtn.setOnClickListener {
 
             val userphoneno = userphonenoTf.editText?.text.toString()
+
+            val userID = uid
+            val userName  =  username
+
+
+            val callInvitationConfig =  ZegoUIKitPrebuiltCallInvitationConfig();
+            ZegoUIKitPrebuiltCallService.init(
+                application,
+                appID,
+                appSign,
+                userID,
+                userName,
+                callInvitationConfig);
 
             databaseReference.child("username").setValue(username)
             databaseReference.child("userphoneno").setValue(userphoneno)
@@ -60,11 +86,15 @@ class PhonenoActivity : AppCompatActivity() {
 
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
+
+
         }
+
+
 
         val backBtn = findViewById<ImageButton>(R.id.ib_back)
         backBtn.setOnClickListener {
-            finish()  // Closes current activity and goes back
+            finish()
         }
 
 

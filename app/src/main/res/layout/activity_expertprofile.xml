@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     
 
 
@@ -33,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="70dp"
+        android:paddingBottom="80dp"
         android:fillViewport="true"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="?attr/actionBarSize"
@@ -46,64 +48,67 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_expertpic"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/docpic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/clinicimage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/baseline_school_24"
+        android:src="@drawable/baseline_home_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_about" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/clinicaddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="Clinic Address"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
-            app:layout_constraintTop_toTopOf="@+id/imageView7" />
+            app:layout_constraintBottom_toBottomOf="@+id/clinicimage"
+            app:layout_constraintStart_toEndOf="@+id/clinicimage"
+            app:layout_constraintTop_toTopOf="@+id/clinicimage" />
 
         <ImageButton
             android:id="@+id/btn_visit"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
 
-            android:src="@drawable/outline_info_24"
+            android:src="@drawable/baseline_near_me_24"
             android:background="@color/white"
 
             android:layout_marginEnd="15dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView14"
+            app:layout_constraintBottom_toBottomOf="@+id/clinicaddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView14" />
+            app:layout_constraintTop_toTopOf="@+id/clinicaddress" />
 
         <TextView
             android:id="@+id/tv_clinicaddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:text="een Murti House, Teen Murti Marg, Teen Murti Marg Area, New Delhi, Delhi 110011"
+            android:justificationMode="inter_word"
+            android:lineSpacingExtra="2dp"
+
+            android:text="Teen Murti House, Teen Murti Marg, Teen Murti Marg Area, New Delhi, Delhi 110011"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            app:layout_constraintTop_toBottomOf="@+id/clinicaddress" />
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
 
         android:layout_marginTop="20dp"
@@ -111,10 +116,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-    <ImageView
+        <ImageView
+            android:id="@+id/personimage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/baseline_person_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Age"
+            android:visibility="gone"
+
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/personimage"
+            app:layout_constraintStart_toEndOf="@+id/personimage"
+            app:layout_constraintTop_toTopOf="@+id/personimage" />
+
+        <TextView
+            android:id="@+id/tv_expertage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22 years old"
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toBottomOf="@+id/age"
+            app:layout_constraintStart_toStartOf="@+id/tv_language"
+            app:layout_constraintTop_toTopOf="@+id/age"
+            />
+
+
+        <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:text="Mode"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
@@ -138,10 +181,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:text="Delhi  Virtual"
+            android:text="Delhi | Video Call"
             app:layout_constraintBottom_toBottomOf="@+id/textView12"
             app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/tv_extrainfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="It's a online audio call session"
+            android:textSize="11sp"
+            android:visibility="gone"
+
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:background="@drawable/modetextview_bg"
+            android:layout_marginEnd="15dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_mode"
+            app:layout_constraintBottom_toBottomOf="@id/tv_mode"/>
 
     <TextView
         android:id="@+id/textView13"
@@ -149,21 +211,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:text="Language"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
 
-    <ImageView
+
+
+        <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/personimage"
         app:srcCompat="@drawable/baseline_info_24" />
 
     <TextView
@@ -172,7 +236,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:text="About"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -192,13 +256,17 @@
         app:layout_constraintTop_toTopOf="@+id/textView13"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+
+        <TextView
         android:id="@+id/tv_about"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
+        android:lineSpacingExtra="2dp"
+
+        android:justificationMode="inter_word"
         android:text="Checking the network cables, modem, and router Reconnecting to Wi-Fi Running Windows Network Diagnostics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -212,8 +280,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Vijay Joshi"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/iv_expertpic"
         app:layout_constraintStart_toStartOf="@+id/iv_expertpic"
         app:layout_constraintTop_toBottomOf="@+id/iv_expertpic" />
@@ -222,7 +291,7 @@
         android:id="@+id/tv_expertdesign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:text="@string/psychologist"
         app:layout_constraintEnd_toEndOf="@+id/tv_expertname"
         app:layout_constraintStart_toStartOf="@+id/tv_expertname"
@@ -234,7 +303,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:text="Experience"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
@@ -244,15 +313,15 @@
         android:id="@+id/tv_expertexp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10 yr"
+        android:text="10 years"
         app:layout_constraintBottom_toBottomOf="@+id/textView21"
         app:layout_constraintStart_toStartOf="@+id/tv_mode"
         app:layout_constraintTop_toTopOf="@+id/textView21" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -286,7 +355,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="0dp"
             android:text="4.4"
-android:layout_gravity="end"            android:textColor="@color/black"
+android:layout_gravity="end"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_designation"
             app:layout_constraintEnd_toEndOf="parent"
@@ -366,12 +435,10 @@ android:layout_gravity="end"            android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Book"
-                android:paddingHorizontal="22dp"
                 android:backgroundTint="@color/lykablue"
                 android:textColor="#FFFFFF"
-                app:cornerRadius="4dp"
-                android:paddingStart="24dp"
-                android:paddingEnd="20dp" />
+                android:paddingStart="50dp"
+                android:paddingEnd="50dp" />
         </LinearLayout>
     </LinearLayout>
 

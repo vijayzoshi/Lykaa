@@ -1,6 +1,7 @@
 package com.example.myapplication.ui
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,18 +13,23 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.myapplication.adapter.TopExpertAdapter
 import com.example.myapplication.model.TopExpertsModel
 import com.example.myapplication.R
+import com.example.myapplication.model.UpcomingSessionModel
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -38,6 +44,8 @@ import java.util.ArrayList
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
+
+    lateinit var upcomingsessionArraylist: ArrayList<UpcomingSessionModel>
 
 
     lateinit var expertRecyclerView: RecyclerView
@@ -58,30 +66,76 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     lateinit var appointmentcl: CardView
 
-    //  lateinit var homePi: CircularProgressIndicator
     lateinit var expertnameTv: TextView
+    lateinit var expertpicTv: ImageView
+
+    lateinit var sessionmodeTv: TextView
+
     lateinit var sessiontimeTv: TextView
     lateinit var sessiondateTv: TextView
     lateinit var expertdesignTv: TextView
-    lateinit var joinsessionBtn: Button
+    lateinit var cliniclocationBtn: Button
     lateinit var nextsessiomTv: TextView
 
+    private lateinit var shimmerContainer: ShimmerFrameLayout
+    private lateinit var contentLayout: NestedScrollView
+
  var location : String = "a"
+
+    lateinit var sessioninfoTv : TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //  homePi = view.findViewById(R.id.pi_home)
+        upcomingsessionArraylist = ArrayList<UpcomingSessionModel>()
+
+
+        shimmerContainer = view.findViewById(R.id.shimmer_view_container)
+        contentLayout = view.findViewById(R.id.content_layout)
+
         appointmentcl = view.findViewById(R.id.cl)
         expertnameTv = view.findViewById(R.id.tv_expertname)
+        expertpicTv = view.findViewById(R.id.iv_expertpic)
+        sessionmodeTv = view.findViewById(R.id.tv_sessionmode)
+
+
         sessiontimeTv = view.findViewById(R.id.tv_time)
         sessiondateTv = view.findViewById(R.id.tv_date)
         expertdesignTv = view.findViewById(R.id.tv_designation)
-        joinsessionBtn = view.findViewById(R.id.btn_joinsession)
+        cliniclocationBtn = view.findViewById(R.id.btn_joinsession)
 
         nextsessiomTv = view.findViewById<TextView>(R.id.nextsession)
         nextsessiomTv.visibility = View.GONE
         appointmentcl.visibility = View.GONE
+
+        shimmerContainer.startShimmer()
+        shimmerContainer.visibility = View.VISIBLE
+        contentLayout.visibility = View.GONE
+
+
+
+
+        sessioninfoTv = view.findViewById(R.id.tv_sessioninfo)
+
+
+        sessioninfoTv.visibility = View.GONE
+        cliniclocationBtn.visibility = View.GONE
+
+
+        val videocallTV : TextView = view.findViewById(R.id.experts)
+        videocallTV.setOnClickListener {
+            val intent = Intent(activity, OtpActivity::class.java)
+            startActivity(intent)
+        }
+
+        /*val tryTv : TextView = view.findViewById(R.id.experts)
+        tryTv.setOnClickListener {
+            val intent = Intent(activity, NewActivity::class.java)
+            startActivity(intent)
+        }
+
+         */
+
 
 
         // Search
@@ -93,7 +147,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
         //homePi.show()
-        getnextsession();
+      getnextsession();
 
 
         /*
@@ -125,7 +179,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         locationDropdown.setAdapter(adapter)
         locationDropdown.setOnItemClickListener { parent, _, position, _ ->
             location = parent.getItemAtPosition(position).toString()
-            Toast.makeText(requireContext(), location, Toast.LENGTH_LONG).show()
             if (location == "All") {
                 location = "a"  // Reset to default unfiltered marker
             }
@@ -166,7 +219,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         lateinit var faqtype: String
         chipPsychologist.setOnClickListener {
             //   filter("psychologist")
-            infoTv.text = "Help you with therapy based approach."
+            infoTv.text = "Helps you with therapy based approach."
             fetchdatafromfirebase("Psychologist")
             faqtype = "Psychologist"
 
@@ -174,7 +227,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         chipPsychiatrist.setOnClickListener {
             // filter("psychiatrist")
-            infoTv.text = "Help you with medication based approach."
+            infoTv.text = "Helps you with medication based approach."
 
             fetchdatafromfirebase("Psychiatrist")
             faqtype = "Psychiatrist"
@@ -184,7 +237,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         chipListener.setOnClickListener {
             // filter("psychiatrist")
-            infoTv.text = "Help you with listening based approach."
+            infoTv.text = "Helps you with listening based approach."
 
             fetchdatafromfirebase("Listener")
             faqtype = "Listener"
@@ -218,82 +271,122 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     fun getnextsession() {
 
+// storing upcomingsessionslist in arraylist
+        val sharedPref = requireActivity().getSharedPreferences("userdetails", Context.MODE_PRIVATE)
+        val uid = sharedPref.getString("userid", "haha")
+
+        if (uid != null) {
+            databaseRefrence.child("users").child(uid).child("sessions").child("upcomingsesions")
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        upcomingsessionArraylist.clear()
+
+                        if(snapshot.exists()){
+
+                            for (datasnapshot in snapshot.children) {
+                                val data = datasnapshot.getValue(UpcomingSessionModel::class.java)
+                                upcomingsessionArraylist.add(data!!)
+                            }
+
+                        }
+
+                        upcomingsessionArraylist.sortBy{ it.timestamp }
+
+
+
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
+        }
+
+
+
+        // showing nect session
+
         databaseRefrence.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 //homePi.hide()
 
+                if ( snapshot.child("users").child(uid.toString()).child("sessions").child("upcomingsesions").exists()) {
 
-                val issessionbooked =
-                    snapshot.child("users").child("1").child("nextsession").child("isbooked")
-                        .getValue<Boolean>()!!
-
-                if (issessionbooked) {
-                    // Upcomingsession
-
-                    //   val expertpicIv : ImageView = view.findViewById(R.id.iv_expertpic)
                     appointmentcl.visibility = View.VISIBLE
                     nextsessiomTv.visibility = View.VISIBLE
 
 
-                    expertnameTv.text =
-                        snapshot.child("users").child("1").child("nextsession")
-                            .child("nextsessiondetails")
-                            .child("expertname").getValue<String>()
-                    sessiondateTv.text =
-                        snapshot.child("users").child("1").child("nextsession")
-                            .child("nextsessiondetails")
-                            .child("sessiondate").getValue<String>()
-                    sessiontimeTv.text =
-                        snapshot.child("users").child("1").child("nextsession")
-                            .child("nextsessiondetails")
-                            .child("sessiontime").getValue<String>()
-                    expertdesignTv.text =
-                        snapshot.child("users").child("1").child("nextsession")
-                            .child("nextsessiondetails")
-                            .child("expertdesign").getValue<String>()
+                    sessiondateTv.text = upcomingsessionArraylist.firstOrNull()?.sessiondate
+                    sessionmodeTv.text = upcomingsessionArraylist.firstOrNull()?.sessionmode
+                    sessiontimeTv.text = upcomingsessionArraylist.firstOrNull()?.sessiontime!!.take(8)
 
-                    val isonlineSession =
-                        snapshot.child("users").child("1").child("nextsession")
-                            .child("nextsessiondetails")
-                            .child("isonlinesession").getValue<Boolean>()!!
 
-                    if (isonlineSession) {
-                        joinsessionBtn.text = "Join Session"
-                        joinsessionBtn.setOnClickListener {
-                            // startmyservice("***********")
-                            val intent = Intent(activity, NewActivity::class.java)
-                            startActivity(intent)
+                    val expertid = upcomingsessionArraylist.firstOrNull()?.expertid
+
+                    expertnameTv.text = snapshot.child("experts").child(expertid.toString()).child("expertname").getValue<String>()
+                    expertdesignTv.text = snapshot.child("experts").child(expertid.toString()).child("expertdesign").getValue<String>()
+
+                    val   imagelink = snapshot.child("experts").child(expertid.toString()).child("expertpic").getValue<String>()
+
+                    Glide.with(context!!)
+                        .load(imagelink)
+                        .into(expertpicTv)
+
+
+                    /************************************************/
+
+
+                    val sessiontype = upcomingsessionArraylist.firstOrNull()?.sessionmode
+
+                  /*  var expertidtype = expertid
+
+                    if (expertidtype != null) {
+                        while (expertidtype >= 10) {
+                            expertidtype /= 10
                         }
-                    } else {
+                    }
 
+                   */
+
+                    if (sessiontype == "Video Call") {
+
+                        sessioninfoTv.visibility = View.VISIBLE
+                        sessioninfoTv.text = "Expert will video call you at session time"
+
+
+
+                    }else if(sessiontype == "Audio Call"){
+                        sessioninfoTv.visibility = View.VISIBLE
+                        sessioninfoTv.text = "Expert will audio call you at session time"
+                    }
+                    else {
+
+                        cliniclocationBtn.visibility = View.VISIBLE
 
                         val lat =
-                            snapshot.child("users").child("1").child("nextsession")
-                                .child("nextsessiondetails")
-                                .child("cliniclat").getValue<String>()
+                            snapshot.child("experts").child(expertid.toString()).child("clinic").child("clinic lat").getValue<String>().toString()
                         val long =
-                            snapshot.child("users").child("1").child("nextsession")
-                                .child("nextsessiondetails")
-                                .child("cliniclong").getValue<String>()
+                            snapshot.child("experts").child(expertid.toString()).child("clinic").child("clinic long").getValue<String>().toString()
+
+                        cliniclocationBtn.setOnClickListener {
+
+                                                    // Create the Uri for the location
+                                                    val gmmIntentUri = Uri.parse("geo:$lat,$long")
+
+                                                    // Create the implicit Intent
+                                                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+
+                                                    // Set the package to ensure it opens in Google Maps
+                                                    mapIntent.setPackage("com.google.android.apps.maps")
+                                                    startActivity(mapIntent)
+
+                                                }
 
 
 
-                        joinsessionBtn.text = "Clinic Address"
-                        joinsessionBtn.setOnClickListener {
 
-                            // Create the Uri for the location
-                            //    val gmmIntentUri = Uri.parse("geo:28.6129,77.2295")
-                            val gmmIntentUri = Uri.parse("geo:$lat,$long")
 
-                            // Create the implicit Intent
-                            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-
-                            // Set the package to ensure it opens in Google Maps
-                            mapIntent.setPackage("com.google.android.apps.maps")
-                            startActivity(mapIntent)
-
-                        }
                     }
 
                 }
@@ -311,7 +404,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
 
 
+
     }
+
+
+
 
 
     fun fetchdatafromfirebase(
@@ -383,6 +480,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
                 expertAapter.notifyDataSetChanged()
+                shimmerContainer.stopShimmer()
+                shimmerContainer.visibility = View.GONE
+                contentLayout.visibility = View.VISIBLE
 
             }
 
@@ -392,7 +492,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
 
 
-      //  Toast.makeText(context, sorttype,Toast.LENGTH_LONG).show()
 
     }
 

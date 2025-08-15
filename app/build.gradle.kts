@@ -60,7 +60,6 @@ dependencies {
 
     //zegocloud sdk
     implementation ("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")
-
     // Nav component
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")

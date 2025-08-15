@@ -1,5 +1,6 @@
 package com.example.myapplication.ui
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,11 +8,12 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toolbar
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.adapter.PersonalchatsAdapter
-import com.example.myapplication.model.EventsModel
+//import com.example.myapplication.model.EventsModel
 import com.example.myapplication.model.PersonalchatsModel
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.auth.FirebaseAuth
@@ -46,7 +48,8 @@ class PersonalchatActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
+        val sharedPref = getSharedPreferences("userdetails", Context.MODE_PRIVATE)
+        val uid = sharedPref.getString("userid", "haha").toString()
 
 
         val expertid = intent.getIntExtra("expertid",0).toString()
@@ -56,24 +59,24 @@ class PersonalchatActivity : AppCompatActivity() {
             finish()
         }
 
-        val bookTv = findViewById<TextView>(R.id.tv_book)
-        bookTv.setOnClickListener {
+        val infoIv = findViewById<ImageButton>(R.id.tv_book)
+        infoIv.setOnClickListener {
 
-            val intent = Intent(this, ExpertprofileActivity :: class.java)
-            intent.putExtra("expertid", expertid)
-            startActivity(intent)
+            val modalBottomSheetDialog = BottomSheetInfo()
+            modalBottomSheetDialog.show(supportFragmentManager, BottomSheetInfo.TAG)
 
         }
 
 
                 //   senderid = FirebaseAuth.getInstance().uid.toString()
-        senderid = "1"
+        senderid = uid
 
         sendmsgEt = findViewById(R.id.et_sendmsg)
         sendIb = findViewById(R.id.ib_send)
         databaseReference =
-            FirebaseDatabase.getInstance().getReference("users").child("1").child("expertschat")
+            FirebaseDatabase.getInstance().getReference("users").child(uid).child("expertschat")
                 .child(expertid)
+
         val timestamp = System.currentTimeMillis()
 
         sendIb.setOnClickListener {
@@ -85,19 +88,18 @@ class PersonalchatActivity : AppCompatActivity() {
 
             }
 
-
         }/**/
 
         val test = findViewById<ImageButton>(R.id.ib_test)
         test.setOnClickListener{
 
-            val data = PersonalchatsModel(timestamp,"2", sendmsgEt.text.toString(), getcurrenttime())
+            val data = PersonalchatsModel(timestamp,expertid, sendmsgEt.text.toString(), getcurrenttime())
             databaseReference.child("msgs").push().setValue(data)
             sendmsgEt.text.clear()
         }
         personalchatArraylist = ArrayList<PersonalchatsModel>()
         personalchatRecyclerview.layoutManager= LinearLayoutManager(this@PersonalchatActivity)
-        personalchatAdapter = PersonalchatsAdapter( personalchatArraylist)
+        personalchatAdapter = PersonalchatsAdapter( this, personalchatArraylist)
         personalchatRecyclerview.adapter =  personalchatAdapter
 
         databaseReference.child("msgs").addValueEventListener(object : ValueEventListener {
@@ -138,7 +140,7 @@ class PersonalchatActivity : AppCompatActivity() {
 
         val istZone = ZoneId.of("Asia/Kolkata")
         val currentISTTime = ZonedDateTime.now(istZone)
-        val ordertime = currentISTTime.format(DateTimeFormatter.ofPattern("dd-MMMM HH:mm a")).toString()
+        val ordertime = currentISTTime.format(DateTimeFormatter.ofPattern("hh:mm a, dd MMM")).toString()
         return ordertime
     }
 

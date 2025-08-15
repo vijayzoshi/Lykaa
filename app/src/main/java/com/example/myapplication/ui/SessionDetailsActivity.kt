@@ -84,7 +84,7 @@ class SessionDetailsActivity : AppCompatActivity() {
         val time = sessiontime.take(8)
         val year = Calendar.getInstance().get(Calendar.YEAR)
 
-        val fullDateTime = "$date $year $time"  // e.g. "19 June 2025 10:00 AM"
+        val fullDateTime = "$date $year $time"
 
         val format = SimpleDateFormat("dd MMMM yyyy hh:mm a", Locale.ENGLISH)
         val parsedDate = format.parse(fullDateTime)
@@ -94,8 +94,17 @@ class SessionDetailsActivity : AppCompatActivity() {
 
             val sessionid = sessionId()
             val sessiondata = SessionData("Upcoming",timestampnew,expertid, sessiondate,sessiontime,  sessionmode, sessionid)
-
             databaseRefrenceuser.child("sessions").child("upcomingsesions").child(sessionid.toString()).setValue(sessiondata)
+            databaseRefrenceuser.child("sessions").child("previoussessions").child(sessionid.toString()).setValue(sessiondata)
+
+
+
+
+            databaseRefrenceuser.child("expertschat").child(expertid.toString()).child("expertid").setValue(expertid)
+            databaseRefrenceuser.child("expertschat").child(expertid.toString()).child("chatallowed").setValue("no")
+
+
+
             val intent = Intent(this, BookingConfirmedActivity:: class.java)
             startActivity(intent)
             finish()

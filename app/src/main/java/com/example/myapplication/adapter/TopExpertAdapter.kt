@@ -41,24 +41,25 @@ class TopExpertAdapter(val context: Context, var datalist : ArrayList<TopExperts
 
         holder.expertname.text = datalist.get(position).expertname
         holder.expertmode.text = datalist.get(position).expertmode
+        holder.expertage.text = datalist.get(position).expertage
+
 
 
         val designation = datalist.get(position).expertdesign
         holder.expertdesign.text = designation
 
+        holder.expertlang.text = datalist.get(position).expertlang
 
-        val exp = datalist.get(position).expertexp.toString() + " years"
-        holder.expertexp.text = exp
+
+        holder.expertexp.text =  datalist.get(position).expertexp
 
         holder.expertrating.text = datalist.get(position).expertrating.toString()
 
         holder.noofrating.text = "(" + datalist.get(position).noofrating.toString() + ")"
 
-        if(designation == "Psychologist" || designation == "Psychiatrist" ){
-            holder.sessiontime.text = "| 1 hr"
-        }else{
-            holder.sessiontime.text = "| 30 min"
-        }
+        holder.sessiontime.text = "for " +  datalist.get(position).sessiontime
+
+
         val charge =  "₹" + datalist.get(position).expertcharge.toString()
         holder.expertcharge.text = charge
 
@@ -83,9 +84,14 @@ class TopExpertAdapter(val context: Context, var datalist : ArrayList<TopExperts
     class MyViewHolder(itemview : View ) : RecyclerView.ViewHolder(itemview){
         val expertname = itemview.findViewById<TextView>(R.id.tv_expertname)
         val expertmode = itemview.findViewById<TextView>(R.id.tv_expertmode)
+        val expertlang = itemview.findViewById<TextView>(R.id.tv_expertlang)
+
+
 
         val expertdesign = itemview.findViewById<TextView>(R.id.tv_designation)
         val expertexp = itemview.findViewById<TextView>(R.id.tv_experince)
+        val expertage = itemview.findViewById<TextView>(R.id.tv_age)
+
         val expertrating = itemview.findViewById<TextView>(R.id.tv_ratings)
         val noofrating = itemview.findViewById<TextView>(R.id.tv_noofrating)
         val expertcharge = itemview.findViewById<TextView>(R.id.tv_charge)

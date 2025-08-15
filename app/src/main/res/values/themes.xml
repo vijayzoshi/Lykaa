@@ -16,13 +16,15 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-
+<!--
     <style name="Mysplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/lightpurple</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/baseline_videocam_24</item>
         <item name="windowSplashScreenAnimationDuration">3000</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.MyApplication</item>
     </style>
+
+    -->
 
 
 </resources>

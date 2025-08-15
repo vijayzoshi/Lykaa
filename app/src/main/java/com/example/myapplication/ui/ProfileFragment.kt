@@ -16,8 +16,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.adapter.EventAdapter
-import com.example.myapplication.model.EventsModel
+//import com.example.myapplication.adapter.EventAdapter
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -127,24 +126,15 @@ private lateinit var googleSignInClient: GoogleSignInClient
         /*
               //  val sharedPref = getSharedPreferences("userdetails", Context.MODE_PRIVATE)
              //   uid = sharedPref.getString("userid", "haha").toString()
-
-
-
-
                 recyclerView = view.findViewById(R.id.rv_allevents)
                 adapter = EventAdapter(requireContext(),eventsArraylist)
-
                 recyclerView.layoutManager = LinearLayoutManager(requireContext())
                 recyclerView.adapter = adapter
-
                 fetchalleventsFromFirebase()
-
                 val locations = listOf("Delhi", "Mumbai", "Bangalore")
                 val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, locations)
                 val locationDropdown = view.findViewById<AutoCompleteTextView>(R.id.locationDropdown)
                 locationDropdown.setAdapter(adapter)
-
-        // Optional: get selected when clicked
                 locationDropdown.setOnItemClickListener { parent, _, position, _ ->
                     val selected = parent.getItemAtPosition(position).toString()
                     Log.d("SelectedLocation", selected)

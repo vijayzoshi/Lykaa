@@ -48,36 +48,55 @@
             android:id="@+id/cg_session"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             app:chipSpacingHorizontal="30dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView8"
             app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_online"
-                android:layout_width="wrap_content"
+                android:id="@+id/chip_audio"
+                android:layout_width="170dp"
                 android:layout_height="80dp"
                 android:checkable="true"
-                android:text="Online"
+                android:text="Audio Call"
                 android:textSize="20sp"
                 app:chipCornerRadius="10dp"
 
                 app:chipEndPadding="20dp"
 
-                app:chipStrokeColor="@color/white"
-                app:chipIcon="@drawable/profileicon"
+                app:chipIcon="@drawable/audiocall"
                 app:chipIconEnabled="true"
                 app:chipIconSize="30dp"
-           />
+                app:chipStrokeColor="@color/white" />
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_online"
+                android:layout_width="170dp"
+                android:layout_height="80dp"
+                android:checkable="true"
+                android:text="Video Call"
+                android:textSize="20sp"
+                app:chipCornerRadius="10dp"
+
+                app:chipEndPadding="20dp"
+
+                app:chipIcon="@drawable/cam"
+                app:chipIconEnabled="true"
+                app:chipIconSize="30dp"
+                app:chipStrokeColor="@color/white" />
+
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_offline"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="80dp"
                 android:checkable="true"
+
                 android:text="Offline"
                 android:textSize="20sp"
                 app:chipCornerRadius="10dp"
@@ -85,8 +104,7 @@
                 app:chipIcon="@drawable/homeicon"
                 app:chipIconEnabled="true"
                 app:chipIconSize="30dp"
-                app:chipStrokeColor="@color/white"
-     />
+                app:chipStrokeColor="@color/white" />
         </com.google.android.material.chip.ChipGroup>
 
         <TextView
@@ -172,6 +190,28 @@
             app:selectionRequired="true"
             />
 
+        <ImageView
+            android:id="@+id/iv_booked"
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_timeslot"
+            app:layout_constraintEnd_toStartOf="@+id/tv_booked"
+            app:layout_constraintTop_toTopOf="@+id/tv_timeslot"
+            app:srcCompat="@drawable/baseline_circle_24" />
+
+        <TextView
+            android:id="@+id/tv_booked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:textSize="9sp"
+            android:text="Already Booked"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_timeslot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_timeslot" />
+
 
         <!--
 
@@ -226,13 +266,13 @@
             android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="70dp"
+            android:layout_marginEnd="100dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#1B3C53"
+            android:backgroundTint="@color/lykablue"
             android:text="Next"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+          />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

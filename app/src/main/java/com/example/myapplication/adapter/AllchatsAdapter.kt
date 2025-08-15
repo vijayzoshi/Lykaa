@@ -21,13 +21,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.getValue
 import java.util.ArrayList
 
 class AllchatsAdapter(val context: Context, private val rootView: View , var datalist: ArrayList<AllChatsmodel>) : RecyclerView.Adapter<AllchatsAdapter.MyViewHolder>() {
 
 
-     val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("users").child("1").child("expertschat")
-
+     val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference()
+    val sharedPref = context.getSharedPreferences("userdetails", Context.MODE_PRIVATE)
+    val uid = sharedPref.getString("userid", "haha").toString()
 
 
 
@@ -43,13 +45,40 @@ class AllchatsAdapter(val context: Context, private val rootView: View , var dat
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
+/*
         holder.expertChatname.text = datalist.get(position).expertname
        // holder.expertChatpic.setImageResource(datalist.get(position).expertpic)
         val imagelink = datalist.get(position).expertpic
         Glide.with(context)
             .load(imagelink)
             .into(holder.expertChatpic)
+
+ */
+
+
+        val expertid = datalist.get(position).expertid
+        var expertname  = ""
+
+        databaseReference.child("experts").child(expertid.toString()).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                expertname = snapshot.child("expertname").getValue<String>().toString()
+                holder.expertChatname.text =expertname
+
+                val imagelink = snapshot.child("expertpic").getValue<String>()
+                Glide.with(context)
+                    .load(imagelink)
+                    .into(holder.expertChatpic)
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        )
+
+
 
         lateinit var lastmsg : String
         lateinit var lasttime : String
@@ -65,7 +94,7 @@ class AllchatsAdapter(val context: Context, private val rootView: View , var dat
 
             if(exist == "yes") {
                 val intent = Intent(context, PersonalchatActivity::class.java)
-                intent.putExtra("expertname", datalist[position].expertname)
+                intent.putExtra("expertname", expertname)
                 intent.putExtra("expertid", datalist[position].expertid)
 
                 context.startActivity(intent)
@@ -78,9 +107,9 @@ class AllchatsAdapter(val context: Context, private val rootView: View , var dat
 
 
 
-        val uid = "1"
+    //    val uid = "1"
 
-        databaseReference.child(datalist.get(position).expertid.toString()).child("msgs").addValueEventListener(object : ValueEventListener {
+        databaseReference.child("users").child(uid).child("expertschat").child(datalist.get(position).expertid.toString()).child("msgs").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var personalchatArraylist : ArrayList<PersonalchatsModel> = ArrayList<PersonalchatsModel>()
 
@@ -96,7 +125,7 @@ class AllchatsAdapter(val context: Context, private val rootView: View , var dat
                     personalchatArraylist.sortBy { it.timestamp }
 
                     lastmsg = personalchatArraylist.get(personalchatArraylist.size - 1).sendmsg
-                    lasttime = personalchatArraylist.get(personalchatArraylist.size - 1).sendtime
+                    lasttime = personalchatArraylist.get(personalchatArraylist.size - 1).sendtime.substring(10)
 
                     if(uid == personalchatArraylist.get(personalchatArraylist.size - 1).senderuid){
                         lastmsg = "You : " + lastmsg

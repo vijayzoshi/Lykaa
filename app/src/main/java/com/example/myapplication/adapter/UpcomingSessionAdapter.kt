@@ -120,7 +120,8 @@ class UpcomingSessionAdapter( val viewtype : String, val context: Context, var d
 
             MaterialAlertDialogBuilder(context)
                 .setTitle(context.getString(R.string.cancel_this_session))
-                .setNegativeButton("No") { dialog, which ->
+                .setNegativeButton("No")
+                { dialog, which ->
                     dialog.cancel()
                 }
                 .setPositiveButton("Yes") { dialog, which ->

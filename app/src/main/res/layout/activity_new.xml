@@ -6,45 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.NewActivity">
 
-    <TextView
-        android:id="@+id/textView"
+
+    <EditText
+        android:id="@+id/userideditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="172dp"
-        android:text="TextView"
+        android:layout_marginTop="250dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Type your id"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
-        android:id="@+id/zegobutton"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
-
     <Button
-        android:id="@+id/button0"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/zegobutton"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="@+id/zegobutton"
-        app:layout_constraintTop_toBottomOf="@+id/zegobutton" />
-
+        android:layout_marginTop="40dp"
+        android:text="Login"
+        android:padding="10dp"
+        android:backgroundTint="@color/lykablue"
+        app:layout_constraintEnd_toEndOf="@+id/userideditText"
+        app:layout_constraintStart_toStartOf="@+id/userideditText"
+        app:layout_constraintTop_toBottomOf="@+id/userideditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

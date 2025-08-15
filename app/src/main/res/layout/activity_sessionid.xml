@@ -19,30 +19,6 @@ tools:context=".ui.SessionidActivity">
     android:layout_height="wrap_content"
     android:layout_gravity="top">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        app:title="Session ID"
-
-        app:subtitle="#123145"
-        android:background="@color/white"
-        app:navigationIcon="@drawable/baseline_arrow_back_24" >
-
-        <TextView
-            android:id="@+id/tv_help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Help"
-            android:textColor="@color/lykablue"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="10dp"
-
-            android:textStyle="bold"
-            />
-    </com.google.android.material.appbar.MaterialToolbar>
-
 </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -56,8 +32,8 @@ tools:context=".ui.SessionidActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_expertpic"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:src="@drawable/docpic"
@@ -85,6 +61,8 @@ tools:context=".ui.SessionidActivity">
         android:layout_height="wrap_content"
         android:background="@drawable/bg_cancelled"
         android:text="Cancelled"
+        android:textSize="13sp"
+
         android:paddingStart="7dp"
         android:paddingEnd="7dp"
         android:paddingTop="2dp"
@@ -108,6 +86,7 @@ tools:context=".ui.SessionidActivity">
         android:paddingBottom="2dp"
         android:textColor="#72BF78"
         android:textStyle="bold"
+        android:textSize="13sp"
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_expertname"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,8 +97,9 @@ tools:context=".ui.SessionidActivity">
         android:id="@+id/tv_expertdesign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="@string/psychiatrist"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tv_expertname"
         app:layout_constraintTop_toBottomOf="@+id/tv_expertname" />
 
@@ -127,7 +107,7 @@ tools:context=".ui.SessionidActivity">
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1.5dp"
         android:layout_margin="10dp"
         android:background="#F3F2F2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -331,7 +311,6 @@ tools:context=".ui.SessionidActivity">
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:text="Clinic Address"
-        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/clinicimage"
         app:layout_constraintStart_toEndOf="@+id/clinicimage"
@@ -339,10 +318,10 @@ tools:context=".ui.SessionidActivity">
 
     <ImageButton
         android:id="@+id/btn_visit"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
 
-        android:src="@drawable/outline_info_24"
+        android:src="@drawable/baseline_near_me_24"
         android:background="@color/white"
 
         android:layout_marginEnd="20dp"
@@ -355,8 +334,9 @@ tools:context=".ui.SessionidActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
+        android:textSize="13sp"
         android:text="Teen Murti House, Teen Murti Marg, Teen Murti Marg Area, New Delhi, Delhi 110011"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -366,5 +346,29 @@ tools:context=".ui.SessionidActivity">
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+
+        app:layout_anchor="@+id/appbar_layout"
+        app:layout_anchorGravity="center"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:title="Session ID">
+
+        <TextView
+            android:id="@+id/tv_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="10dp"
+            android:text="Help"
+            android:textColor="@color/lykablue"
+
+            android:textStyle="bold" />
+    </com.google.android.material.appbar.MaterialToolbar>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

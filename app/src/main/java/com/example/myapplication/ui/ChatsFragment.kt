@@ -1,8 +1,11 @@
 package com.example.myapplication.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.adapter.AllchatsAdapter
@@ -22,6 +25,8 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
     lateinit var allchatArraylist : ArrayList<AllChatsmodel>
     lateinit var allchatAdapter: AllchatsAdapter
     lateinit var databaseRefrence : DatabaseReference
+    private lateinit var sharedPref : SharedPreferences
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,15 +34,21 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
         allchatRecyclerview = view.findViewById(R.id.rv_allchats)
         allchatRecyclerview.layoutManager= LinearLayoutManager(context)
         allchatArraylist = ArrayList<AllChatsmodel>()
+        val nochat = view.findViewById<TextView>(R.id.nochatyet)
+        val booked = view.findViewById<TextView>(R.id.booked)
 
 
 
-        databaseRefrence = FirebaseDatabase.getInstance().getReference("users").child("1").child("expertschat")
+        sharedPref = requireActivity().getSharedPreferences("userdetails", Context.MODE_PRIVATE)
+        val uid = sharedPref.getString("userid", "haha")
+
+        databaseRefrence = FirebaseDatabase.getInstance().getReference("users").child(uid.toString()).child("expertschat")
         databaseRefrence.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 allchatArraylist.clear()
 
                 if(snapshot.exists()){
+                    allchatRecyclerview.visibility = View.VISIBLE
 
                     for(datasnapshot in snapshot.children){
 
@@ -47,8 +58,14 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
                     allchatAdapter = AllchatsAdapter(context!!, view,allchatArraylist)
                     allchatRecyclerview.adapter = allchatAdapter
 
+                } else{
+                nochat.visibility = View.VISIBLE
+                    booked.visibility = View.VISIBLE
+
+
                 }
-            }
+
+        }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")

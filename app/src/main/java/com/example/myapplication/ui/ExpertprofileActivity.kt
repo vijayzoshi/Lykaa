@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityExpertprofileBinding
@@ -44,6 +45,27 @@ class ExpertprofileActivity : AppCompatActivity() {
 
         val expertid = intent.getIntExtra("expertid",0)
 
+
+        var expertidtype = expertid
+
+        while (expertidtype >= 10) {
+            expertidtype /= 10
+        }
+
+        if (expertidtype == 3) {
+            binding.personimage.visibility = View.VISIBLE
+            binding.age.visibility = View.VISIBLE
+            binding.tvExpertage.visibility = View.VISIBLE
+           // binding.tvExtrainfo.visibility = View.VISIBLE
+
+            binding.clinicimage.visibility = View.GONE
+            binding.clinicaddress.visibility = View.GONE
+            binding.btnVisit.visibility = View.GONE
+
+
+
+        }
+
         databaseRefrence = FirebaseDatabase.getInstance().getReference("experts")
         databaseRefrence.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -52,11 +74,19 @@ class ExpertprofileActivity : AppCompatActivity() {
                     binding.tvExpertname.text = expert.expertname
                     binding.tvExpertdesign.text = expert.expertdesign
                     binding.tvAbout.text = expert.expertabout
-                    val exp = expert.expertexp.toString() + " years"
-                    binding.tvExpertexp.text = exp
+
+                    binding.tvExpertage.text = expert.expertage
+
+                    binding.tvExpertexp.text = expert.expertexp
                     binding.tvLanguage.text = expert.expertlang
                     binding.tvMode.text = expert.expertmode
                     binding.tvRatings.text = expert.expertrating.toString()
+
+                    binding.tvEventcharge.text = "₹" + expert.expertcharge.toString()
+                    binding.tvSessiontime.text =  "| " +expert.sessiontime
+
+
+                    binding.tvNoofrating.text = "(" + expert.noofrating.toString() + ")"
 
                     val   imagelink = expert.expertpic
                     Glide.with(getApplicationContext())
@@ -76,18 +106,11 @@ class ExpertprofileActivity : AppCompatActivity() {
         binding.btnBooknow.setOnClickListener {
             val intent = Intent(this, DateTimeActivity:: class.java)
             intent.putExtra("expertid", expertid)
+            intent.putExtra("expertidtype", expertidtype)
             startActivity(intent)
         }
 
-        binding.btnVisit.setOnClickListener {   // Create the Uri for the location
-            val gmmIntentUri = Uri.parse("geo: $lat, $long")
 
-            // Create the implicit Intent
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-
-            // Set the package to ensure it opens in Google Maps
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent) }
 
 
         databaseRefrence.addValueEventListener(object : ValueEventListener {
@@ -104,7 +127,15 @@ class ExpertprofileActivity : AppCompatActivity() {
             }
         }
         )
+        binding.btnVisit.setOnClickListener {   // Create the Uri for the location
+            val gmmIntentUri = Uri.parse("geo:$lat,$long?q=$lat,$long(Lyka Clinic)")
 
+            // Create the implicit Intent
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+
+            // Set the package to ensure it opens in Google Maps
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent) }
 
     }
 }

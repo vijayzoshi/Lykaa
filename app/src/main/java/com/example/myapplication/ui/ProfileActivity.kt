@@ -49,7 +49,7 @@ class ProfileActivity : AppCompatActivity() {
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 usernameTv.text =  snapshot.child("1").child("username").getValue<String>()
-                usernumberTv.text = snapshot.child("1").child("usernumber").getValue<String>()
+                usernumberTv.text = "+91 "+snapshot.child("1").child("usernumber").getValue<String>()
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Title -->
         <TextView
             android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
@@ -24,17 +23,387 @@
             android:layout_gravity="start|center_vertical"
             android:textColor="@color/black"
             android:text="Lyka"
-            android:fontFamily="@font/extrabold"
+            android:textStyle="bold"
+
             android:textSize="25sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
 
-    <androidx.core.widget.NestedScrollView
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        >
+        android:visibility="gone"
+        app:shimmer_duration="800">
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                   >
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="#E0E0E0" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:layout_width="150dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="100dp"
+                                    android:layout_height="14dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="120dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#E0E0E0" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Shimmer Expert Card 2 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="#E0E0E0" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:layout_width="150dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="100dp"
+                                    android:layout_height="14dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="120dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#E0E0E0" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Shimmer Expert Card 3 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="#E0E0E0" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:layout_width="150dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="100dp"
+                                    android:layout_height="14dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="120dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#E0E0E0" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <!-- Shimmer Expert Card 3 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="#E0E0E0" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:layout_width="150dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="100dp"
+                                    android:layout_height="14dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="120dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#E0E0E0" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <!-- Shimmer Expert Card 3 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="#E0E0E0" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:layout_width="150dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="100dp"
+                                    android:layout_height="14dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="120dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#E0E0E0" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <!-- Shimmer Expert Card 3 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="#E0E0E0" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:layout_width="150dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="100dp"
+                                    android:layout_height="14dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                                <View
+                                    android:layout_width="120dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="#E0E0E0" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="80dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#E0E0E0" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="visible">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -74,9 +443,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:text="Next Sesssion"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:fontFamily="@font/bold"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cd_search" />
@@ -112,8 +481,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_expertpic"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:src="@drawable/docpic"
@@ -132,7 +501,23 @@
                         app:layout_constraintStart_toEndOf="@+id/iv_expertpic"
                         app:layout_constraintTop_toTopOf="@+id/iv_expertpic" />
 
+                    <TextView
+                        android:id="@+id/tv_sessionmode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Online"
+                        android:textSize="11sp"
 
+                        android:textStyle="bold"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:background="@drawable/modetextview_bg"
+                        android:layout_marginEnd="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_expertname"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_expertname" />
                     <TextView
                         android:id="@+id/tv_designation"
                         android:layout_width="wrap_content"
@@ -144,21 +529,22 @@
 
 
                     <LinearLayout
+                        android:id="@+id/linearLayout2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal"
-                        app:layout_constraintBottom_toTopOf="@+id/btn_joinsession"
+
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_expertpic">
 
                         <ImageView
                             android:id="@+id/imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="20dp"
+
                             android:src="@drawable/baseline_calendar_month_24" />
 
                         <TextView
@@ -166,45 +552,65 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
                             android:text="Monday, Aug 29"
+                            android:layout_marginStart="10dp"
 
                             android:textColor="@color/black" />
 
-                        <ImageView
+                        <View
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
+                            />
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="10dp"
+
                             android:src="@drawable/baseline_access_time_24" />
 
                         <TextView
                             android:id="@+id/tv_time"
                             android:layout_width="wrap_content"
+                            android:layout_marginEnd="20dp"
 
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
                             android:text="11:00 A.M."
                             android:textColor="@color/black" />
 
 
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/tv_sessioninfo"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        android:text="Expert will video/audio call you at session time"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 
                     <Button
                         android:id="@+id/btn_joinsession"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="70dp"
-                        android:layout_marginEnd="70dp"
-                        android:layout_marginBottom="10dp"
-                        android:backgroundTint="#0968F6"
-                        android:text="@string/join_session"
 
-                        android:textSize="15sp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/lykablue"
+                        android:text="Clinic Location"
+
+
+                        app:layout_constraintTop_toBottomOf="@id/linearLayout2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.495"
                         app:layout_constraintStart_toStartOf="parent" />
 
 
@@ -224,7 +630,6 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/bold"
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cl" />
@@ -255,8 +660,9 @@
                     android:checked="true"
                     android:paddingTop="10dp"
                     android:text="@string/psychologist"
+                    android:textStyle="bold"
+
                     android:textSize="10sp"
-                    android:fontFamily="@font/regular"
                     app:chipBackgroundColor="@color/chip_selector"
                     app:chipEndPadding="20dp"
                     app:chipStartPadding="20dp"
@@ -271,7 +677,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:text="@string/psychiatrist2"
-                    android:fontFamily="@font/regular"
+                    android:textStyle="bold"
 
                     android:textSize="10sp"
                     app:chipBackgroundColor="@color/chip_selector"
@@ -286,7 +692,7 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:text="Listener"
-                    android:fontFamily="@font/regular"
+                    android:textStyle="bold"
 
                     android:textSize="10sp"
                     app:chipBackgroundColor="@color/chip_selector"
@@ -301,7 +707,8 @@
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="#E0E0E0"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -328,7 +735,6 @@
                 android:text="Help you with therapy based approach."
                 android:textSize="12sp"
                 android:layout_marginStart="5dp"
-                android:fontFamily="@font/regular"
                 app:layout_constraintBottom_toBottomOf="@+id/imagebutton"
                 app:layout_constraintStart_toEndOf="@+id/imagebutton"
                 app:layout_constraintTop_toTopOf="@+id/imagebutton"
@@ -402,6 +808,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"

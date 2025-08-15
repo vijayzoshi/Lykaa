@@ -27,6 +27,7 @@ class FaqAdapter(  val datalist : ArrayList<FaqModel>) : RecyclerView.Adapter<Fa
         if(isExpandable){
             holder.ans.visibility = View.VISIBLE
 
+
         }else{
             holder.ans.visibility = View.GONE
 

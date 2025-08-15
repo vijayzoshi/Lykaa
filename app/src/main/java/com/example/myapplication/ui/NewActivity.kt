@@ -1,11 +1,16 @@
 package com.example.myapplication.ui
 
+import android.app.Application
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.myapplication.R
+import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallService
+import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig
 import com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
 import com.zegocloud.uikit.service.defines.ZegoUIKitUser
 import java.util.Collections
@@ -13,58 +18,48 @@ import java.util.Collections
 class NewActivity : AppCompatActivity() {
 
 
-    lateinit var videocallbtn : ZegoSendCallInvitationButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new)
 
-        val tv = findViewById<TextView>(R.id.textView)
-        val targetuserId = findViewById<EditText>(R.id.editTextText)
-        val btn = findViewById<Button>(R.id.button0)
-         videocallbtn= findViewById(R.id.zegobutton)
-
-        val userid = intent.getStringExtra("userid")
-        tv.text = userid
+        val loginBtn = findViewById<Button>(R.id.button)
+        val useridEt = findViewById<EditText>(R.id.userideditText)
 
 
-    //    startvideocall(targetuserId.text.toString().trim())
 
 
-        startvideocall("hi")
+        val  application = application // Android's application context
+        val  appID =1128845963L    // yourAppID
+        val appSign ="7ed70bc4ef4935a75f27ed561414f69f26bde8e574fec4b505b1ec47b6397eb3";  // yourAppSign
 
 
-        btn.setOnClickListener {
+
+
+        loginBtn.setOnClickListener {
+            val userID = useridEt.text.toString()// yourUserID, userID should only contain numbers, English characters, and '_'.
+            val userName  =  "jaja"// yourUserName
+
+
+            val callInvitationConfig =  ZegoUIKitPrebuiltCallInvitationConfig();
+            ZegoUIKitPrebuiltCallService.init(
+                application,
+                appID,
+                appSign,
+                userID,
+                userName,
+                callInvitationConfig);
+
+            val intent = Intent(this, OtpActivity::class.java)
+            intent.putExtra("userid", userID)
+            startActivity(intent)
 
         }
 
-       /*
-        targetuserId.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
-            }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                startvideocall(targetuserId.text.toString().trim())
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
-            }
-
-        })
-
-        */
-    }
-
-     private fun startvideocall(targetuser : String) {
-
-         videocallbtn.setIsVideoCall(true)
-
-         videocallbtn.resourceID = "zego_uikit_call"
-        videocallbtn.setInvitees(Collections.singletonList(ZegoUIKitUser(targetuser)))
 
     }
+
+
 }
